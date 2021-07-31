@@ -1,10 +1,14 @@
 import React from 'react';
+import { CssBaseline } from '@material-ui/core';
+
+import Form from './components/Form';
 
 function App() {
 	return (
-		<div>
-			<h1>App</h1>
-		</div>
+		<>
+			<CssBaseline />
+			<Form />
+		</>
 	);
 }
 

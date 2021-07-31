@@ -1,0 +1,15 @@
+.form {
+	width: 60%;
+	margin: 0 auto;
+	position: relative;
+
+	&__input {
+		margin: 0.5rem 1rem !important;
+	}
+
+	&__btn {
+		position: absolute !important;
+		right: 0 !important;
+		margin-top: 0.5rem !important;
+	}
+}
