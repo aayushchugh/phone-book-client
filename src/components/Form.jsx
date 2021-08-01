@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Form.scss';
 
-function Form() {
+function Form(props) {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [phone, setPhone] = useState('');

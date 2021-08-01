@@ -29,7 +29,7 @@ function List() {
 		axios.get(`${process.env.REACT_APP_API_URL}/get-all-numbers`).then(data => {
 			setResponse(data.data.data);
 		});
-	}, []);
+	}, [response]);
 
 	return (
 		<TableContainer className='table' component={Paper}>
@@ -39,7 +39,7 @@ function List() {
 						<TableCell>Name</TableCell>
 						<TableCell align='right'>Phone Number</TableCell>
 						<TableCell align='right'>Email</TableCell>
-						<TableCell align='right'>Edit</TableCell>
+						<TableCell align='right'>{''}</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
