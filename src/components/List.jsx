@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import axios from 'axios';
 import {
 	Table,
 	TableBody,
@@ -9,7 +10,6 @@ import {
 	TableRow,
 	Paper,
 } from '@material-ui/core/';
-
 import './List.scss';
 
 const useStyles = makeStyles({
@@ -24,18 +24,18 @@ function createData(name, phone, email) {
 
 const rows = [
 	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
 ];
 
 function List() {
 	const classes = useStyles();
+
+	const [response, setResponse] = useState([]);
+
+	useEffect(() => {
+		axios.get(`${process.env.REACT_APP_API_URL}get-all-numbers`).then(data => {
+			setResponse(data.data.data);
+		});
+	}, []);
 
 	return (
 		<TableContainer className='table' component={Paper}>
@@ -48,13 +48,13 @@ function List() {
 					</TableRow>
 				</TableHead>
 				<TableBody>
-					{rows.map(row => (
-						<TableRow key={row.name}>
+					{response.map(phone => (
+						<TableRow key={phone._id}>
 							<TableCell component='th' scope='row'>
-								{row.phone}
+								{phone.firstName}
 							</TableCell>
-							<TableCell align='right'>{row.phone}</TableCell>
-							<TableCell align='right'>{row.email}</TableCell>
+							<TableCell align='right'>{phone.phone}</TableCell>
+							<TableCell align='right'>{phone.email}</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
