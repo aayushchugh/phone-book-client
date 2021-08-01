@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
 import axios from 'axios';
 import {
 	Table,
@@ -18,21 +20,13 @@ const useStyles = makeStyles({
 	},
 });
 
-function createData(name, phone, email) {
-	return { name, phone, email };
-}
-
-const rows = [
-	createData('Ayush Chugh', 9501852700, 'ayushchugh2006@gmail.com'),
-];
-
 function List() {
 	const classes = useStyles();
 
 	const [response, setResponse] = useState([]);
 
 	useEffect(() => {
-		axios.get(`${process.env.REACT_APP_API_URL}get-all-numbers`).then(data => {
+		axios.get(`${process.env.REACT_APP_API_URL}/get-all-numbers`).then(data => {
 			setResponse(data.data.data);
 		});
 	}, []);
@@ -45,16 +39,23 @@ function List() {
 						<TableCell>Name</TableCell>
 						<TableCell align='right'>Phone Number</TableCell>
 						<TableCell align='right'>Email</TableCell>
+						<TableCell align='right'>Edit</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>
 					{response.map(phone => (
 						<TableRow key={phone._id}>
 							<TableCell component='th' scope='row'>
-								{phone.firstName}
+								{phone.firstName} {phone.lastName}
 							</TableCell>
 							<TableCell align='right'>{phone.phone}</TableCell>
-							<TableCell align='right'>{phone.email}</TableCell>
+							<TableCell align='right'>
+								{phone.email ? phone.email : 'N/A'}
+							</TableCell>
+							<TableCell align='right'>
+								<DeleteIcon />
+								<EditIcon />
+							</TableCell>
 						</TableRow>
 					))}
 				</TableBody>
