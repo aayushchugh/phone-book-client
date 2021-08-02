@@ -11,6 +11,8 @@ function Form(props) {
 	const [email, setEmail] = useState('');
 
 	const formHandler = e => {
+		e.preventDefault();
+
 		axios
 			.post(`${process.env.REACT_APP_API_URL}/add-new-number`, {
 				firstName: firstName,
@@ -19,13 +21,15 @@ function Form(props) {
 				email: email,
 			})
 			.then(response => {
-				console.log(response);
 				if (response.data.status === 400) {
 					alert(response.data.message);
 				}
 			});
 
-		e.preventDefault();
+		document.getElementById('first-name').value = '';
+		document.getElementById('last-name').value = '';
+		document.getElementById('phone').value = '';
+		document.getElementById('email').value = '';
 	};
 
 	return (
@@ -34,6 +38,7 @@ function Form(props) {
 				<div className='form__top'>
 					<TextField
 						className='form__input'
+						id='first-name'
 						variant='outlined'
 						label='First Name'
 						required
@@ -41,6 +46,7 @@ function Form(props) {
 					/>
 					<TextField
 						className='form__input'
+						id='last-name'
 						variant='outlined'
 						label='Last Name'
 						required
@@ -50,6 +56,7 @@ function Form(props) {
 
 				<div className='form__bottom'>
 					<TextField
+						id='phone'
 						variant='outlined'
 						label='phone number'
 						type='number'
@@ -60,6 +67,7 @@ function Form(props) {
 					/>
 					<TextField
 						variant='outlined'
+						id='email'
 						label='email'
 						type='email'
 						fullWidth
