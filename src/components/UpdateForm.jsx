@@ -37,6 +37,8 @@ function UpdateForm() {
 			.then(res => {
 				console.log(res);
 			});
+
+		window.location = '/';
 	};
 
 	return (
@@ -97,7 +99,7 @@ function UpdateForm() {
 					variant='contained'
 					color='primary'
 				>
-					Add New Contact
+					Update
 				</Button>
 			</form>
 		</>

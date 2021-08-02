@@ -30,6 +30,8 @@ function Form() {
 		document.getElementById('last-name').value = '';
 		document.getElementById('phone').value = '';
 		document.getElementById('email').value = '';
+
+		window.location.reload()
 	};
 
 	return (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
@@ -13,6 +14,7 @@ import {
 	TableRow,
 	Paper,
 } from '@material-ui/core/';
+
 import './List.scss';
 
 const useStyles = makeStyles({
@@ -38,6 +40,8 @@ function List() {
 		const id = e.target.childNodes[0].value;
 
 		axios.delete(`${process.env.REACT_APP_API_URL}/delete-number/${id}`);
+
+		window.location.reload();
 	};
 
 	return (
@@ -75,14 +79,14 @@ function List() {
 										<DeleteIcon className='icons__icon' />
 									</Button>
 								</form>
-								<a
+								<Link
 									className='icons__form'
-									href={`/update-contact/${phone._id}`}
+									to={`/update-contact/${phone._id}`}
 								>
 									<Button className='icons__btn' type='submit' color='primary'>
 										<EditIcon className='icons__icon' />
 									</Button>
-								</a>
+								</Link>
 							</TableCell>
 						</TableRow>
 					))}
