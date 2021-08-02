@@ -30,7 +30,7 @@ function List() {
 		axios.get(`${process.env.REACT_APP_API_URL}/get-all-numbers`).then(data => {
 			setResponse(data.data.data);
 		});
-	}, [response]);
+	}, []);
 
 	const deleteHandler = e => {
 		e.preventDefault();
@@ -75,13 +75,14 @@ function List() {
 										<DeleteIcon className='icons__icon' />
 									</Button>
 								</form>
-								<form className='icons__form'>
-									<input type='hidden' value={phone._id} />
-
+								<a
+									className='icons__form'
+									href={`/update-contact/${phone._id}`}
+								>
 									<Button className='icons__btn' type='submit' color='primary'>
 										<EditIcon className='icons__icon' />
 									</Button>
-								</form>
+								</a>
 							</TableCell>
 						</TableRow>
 					))}

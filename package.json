@@ -39,5 +39,9 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
-	}
+	},
+	"main": "index.js",
+	"repository": "git@github.com:aayushchugh/phone-book-client.git",
+	"author": "Ayush Chugh <ayushchugh2006@gmail.com>",
+	"license": "MIT"
 }
