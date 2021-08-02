@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Form.scss';
 
-function Form(props) {
+function Form() {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [phone, setPhone] = useState('');
@@ -42,6 +42,7 @@ function Form(props) {
 						variant='outlined'
 						label='First Name'
 						required
+						autoComplete='off'
 						onChange={e => setFirstName(e.target.value)}
 					/>
 					<TextField
@@ -50,6 +51,7 @@ function Form(props) {
 						variant='outlined'
 						label='Last Name'
 						required
+						autoComplete='off'
 						onChange={e => setLastName(e.target.value)}
 					/>
 				</div>
@@ -63,6 +65,7 @@ function Form(props) {
 						fullWidth
 						className='form__input'
 						required
+						autoComplete='off'
 						onChange={e => setPhone(e.target.value)}
 					/>
 					<TextField
@@ -72,6 +75,7 @@ function Form(props) {
 						type='email'
 						fullWidth
 						className='form__input'
+						autoComplete='off'
 						onChange={e => setEmail(e.target.value)}
 					/>
 				</div>

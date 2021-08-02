@@ -1,5 +1,25 @@
 .table {
 	margin-top: 5rem;
 	background-color: #fafafa !important;
-   box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.icons {
+	display: flex !important;
+
+	&__form {
+		width: 3rem;
+	}
+
+	&__btn {
+		transition: all 0.2s !important;
+
+		&:hover {
+			span {
+				svg {
+					color: #303f9fbd !important;
+				}
+			}
+		}
+	}
 }
