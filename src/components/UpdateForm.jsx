@@ -35,10 +35,8 @@ function UpdateForm() {
 				email: email,
 			})
 			.then(res => {
-				console.log(res);
+				window.location = '/';
 			});
-
-		// window.location = '/';
 	};
 
 	return (
