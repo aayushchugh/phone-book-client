@@ -38,7 +38,7 @@ function UpdateForm() {
 				console.log(res);
 			});
 
-		window.location = '/';
+		// window.location = '/';
 	};
 
 	return (
