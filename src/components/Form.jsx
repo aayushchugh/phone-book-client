@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Form.scss';
 
-const Form =({formSubmit}) => {
+const Form = ({ setFormSubmit }) => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [phone, setPhone] = useState('');
@@ -19,12 +19,13 @@ const Form =({formSubmit}) => {
 				lastName: lastName,
 				phone: phone,
 				email: email,
-			}).then(response => {
+			})
+			.then(response => {
 				if (response.data.status === 400) {
 					alert(response.data.message);
-				} else {
-					formSubmit(true);
 				}
+
+				setFormSubmit(true);
 			});
 
 		document.getElementById('first-name').value = '';
@@ -32,7 +33,7 @@ const Form =({formSubmit}) => {
 		document.getElementById('phone').value = '';
 		document.getElementById('email').value = '';
 
-		window.location.reload()
+		// window.location.reload()
 	};
 
 	return (
@@ -94,6 +95,6 @@ const Form =({formSubmit}) => {
 			</form>
 		</>
 	);
-}
+};
 
 export default Form;

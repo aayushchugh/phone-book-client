@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 	},
 });
 
-const List = ({formSubmit}) => {
+const List = ({ formSubmit, setFormSubmit }) => {
 	const classes = useStyles();
 
 	const [response, setResponse] = useState([]);
@@ -31,8 +31,10 @@ const List = ({formSubmit}) => {
 	useEffect(() => {
 		axios.get(`${process.env.REACT_APP_API_URL}/get-all-numbers`).then(data => {
 			setResponse(data.data.data);
+			setFormSubmit(false);
 		});
-	}, []);
+		//eslint-disable-next-line
+	}, [formSubmit]);
 
 	const deleteHandler = e => {
 		e.preventDefault();
@@ -40,8 +42,7 @@ const List = ({formSubmit}) => {
 		const id = e.target.childNodes[0].value;
 
 		axios.delete(`${process.env.REACT_APP_API_URL}/delete-number/${id}`);
-
-		window.location.reload();
+		setFormSubmit(true);
 	};
 
 	return (
@@ -94,6 +95,6 @@ const List = ({formSubmit}) => {
 			</Table>
 		</TableContainer>
 	);
-}
+};
 
 export default List;

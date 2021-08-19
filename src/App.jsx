@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -12,22 +12,24 @@ import List from './components/List';
 
 function App() {
 	const [formSubmit, setFormSubmit] = useState(false);
-	const handleFormSubmit = () =>{
-		setFormSubmit(true);
-	}
+
+	const handleFormSubmit = bool => {
+		setFormSubmit(bool);
+	};
+
 	return (
 		<>
 			<CssBaseline />
 			<Router>
 				<Switch>
 					<Route path='/' exact>
-						<Form formSubmit={handleFormSubmit}/>
-						<List formSubmit={formSubmit}/>
+						<Form setFormSubmit={handleFormSubmit} />
+						<List formSubmit={formSubmit} setFormSubmit={handleFormSubmit} />
 					</Route>
 
 					<Route exact path='/update-contact/:id'>
-						<UpdateForm />
-						<List />
+						<UpdateForm setFormSubmit={handleFormSubmit} />
+						<List formSubmit={formSubmit} setFormSubmit={handleFormSubmit} />
 					</Route>
 
 					<Route exact path='/404'>

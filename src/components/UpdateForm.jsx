@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import './Form.scss';
 
-function UpdateForm() {
+const UpdateForm = () => {
 	// const [response, setResponse] = useState({});
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
@@ -102,6 +102,6 @@ function UpdateForm() {
 			</form>
 		</>
 	);
-}
+};
 
 export default UpdateForm;
