@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import './Form.scss';
 
-function Form() {
+const Form =({formSubmit}) => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [phone, setPhone] = useState('');
@@ -19,10 +19,11 @@ function Form() {
 				lastName: lastName,
 				phone: phone,
 				email: email,
-			})
-			.then(response => {
+			}).then(response => {
 				if (response.data.status === 400) {
 					alert(response.data.message);
+				} else {
+					formSubmit(true);
 				}
 			});
 

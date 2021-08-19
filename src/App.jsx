@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -11,14 +11,18 @@ import UpdateForm from './components/UpdateForm';
 import List from './components/List';
 
 function App() {
+	const [formSubmit, setFormSubmit] = useState(false);
+	const handleFormSubmit = () =>{
+		setFormSubmit(true);
+	}
 	return (
 		<>
 			<CssBaseline />
 			<Router>
 				<Switch>
 					<Route path='/' exact>
-						<Form />
-						<List />
+						<Form formSubmit={handleFormSubmit}/>
+						<List formSubmit={formSubmit}/>
 					</Route>
 
 					<Route exact path='/update-contact/:id'>

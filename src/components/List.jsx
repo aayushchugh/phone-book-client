@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 	},
 });
 
-function List() {
+const List = ({formSubmit}) => {
 	const classes = useStyles();
 
 	const [response, setResponse] = useState([]);
